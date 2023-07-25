@@ -64,8 +64,10 @@ function handleTouch(e) {
 function handleTouchEnd(e) {
     e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
     if (game_state === 'Play') {
-        img.src = 'images/Bird.png';
+        bird_dy = 0; // Set bird_dy to 0 to stop the bird's upward movement
     }
+}
+
     
     // Calculate the vertical movement distance for bird_dy
     const touchEndY = e.changedTouches[0].clientY;
