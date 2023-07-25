@@ -1,4 +1,5 @@
 let move_speed = 3, grativy = 0.5;
+let touchStartY = 0;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
 let sound_point = new Audio('sounds effect/point.mp3');
@@ -46,16 +47,28 @@ function handleKeyUp(e) {
 }
 
 function handleTouch(e) {
-    if (game_state === 'Play') {
+    e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
+    if (game_state === 'Start') {
         img.src = 'images/Bird-2.png';
         bird_dy = -7.6;
+        game_state = 'Play'; // Start the game on touch
+        message.innerHTML = ''; // Remove the starting message
+        message.classList.remove('messageStyle');
+        play(); // Start the game loop
     }
+    
+    // Store the initial touch position for calculating the bird_dy value
+    touchStartY = e.touches[0].clientY;
 }
-
 function handleTouchEnd(e) {
+    e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
     if (game_state === 'Play') {
         img.src = 'images/Bird.png';
     }
+    
+    // Calculate the vertical movement distance for bird_dy
+    const touchEndY = e.changedTouches[0].clientY;
+    bird_dy = (touchEndY - touchStartY) * 0.15; // Adjust the multiplier as needed for sensitivity
 }
 
 function play(){
