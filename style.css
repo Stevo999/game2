@@ -64,20 +64,28 @@
 	color: gold;
 	font-weight: bold;
 }
-@media only screen and (max-width: 1080px) {
-    .message{
-		font-size: 50px;
-		top: 50%;
-		white-space: nowrap;
-	}
-	.score{
-		font-size: 8vh;
-	}
-	.bird{
-		width: 120px;
-		height: 90px;
-	}
-	.pipe_sprite{
-		width: 14vw;
-	}
+/* style_mobile.css */
+
+@media only screen and (max-width: 768px) {
+    /* Adjust the size of the bird for mobile devices */
+    .bird {
+        height: 60px;
+        width: 78px;
+        top: 30vh;
+        left: 25vw;
+    }
+
+    /* Adjust the size and position of the message for mobile devices */
+    .message {
+        font-size: 30px;
+        top: 40%;
+    }
+
+    /* Adjust the size of the score for mobile devices */
+    .score {
+        height: 5vh;
+        font-size: 5vh;
+    }
+
+    /* Adjust other styles as needed for mobile devices */
 }
