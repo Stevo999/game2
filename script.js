@@ -50,7 +50,7 @@ function handleTouch(e) {
     e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
     if (game_state === 'Start') {
         img.src = 'images/Bird-2.png';
-        bird_dy = -7.6;
+        bird_dy = -5; // Reduce the initial velocity for touch control
         game_state = 'Play'; // Start the game on touch
         message.innerHTML = ''; // Remove the starting message
         message.classList.remove('messageStyle');
@@ -60,6 +60,7 @@ function handleTouch(e) {
     // Store the initial touch position for calculating the bird_dy value
     touchStartY = e.touches[0].clientY;
 }
+
 function handleTouchEnd(e) {
     e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
     if (game_state === 'Play') {
@@ -68,9 +69,8 @@ function handleTouchEnd(e) {
     
     // Calculate the vertical movement distance for bird_dy
     const touchEndY = e.changedTouches[0].clientY;
-    bird_dy = (touchEndY - touchStartY) * 0.15; // Adjust the multiplier as needed for sensitivity
+    bird_dy = (touchEndY - touchStartY) * 0.08; // Adjust the multiplier as needed for sensitivity
 }
-
 function play(){
     function move(){
         if(game_state != 'Play') return;
